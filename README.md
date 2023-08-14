@@ -122,8 +122,8 @@ Tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html).
   of doing this is to create a directory called `build` and let CMake generate build files (e.g.,
   Makefiles) and other files under that directory. The reason why you want to do this is to cleanly
   separate your source from build files. To accomplish this, you can enter the following commands
-  from your source's root directory. (`$` indicates a shell, so you shouldn't type it when you try
-  the commands.)
+  from your source's root directory. (`$` indicates a shell prompt, so you shouldn't type it when
+  you try the commands.)
   ```bash
   $ mkdir build
   $ cd build
