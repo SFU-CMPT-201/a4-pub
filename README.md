@@ -158,29 +158,30 @@ Tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html).
       |-- add.c
       \-- main.c
   ```
-  In fact, this is how developers typically organize a C source code base---a `CMakeLists.txt` in
-  the root directory, a `build/` directory for build files and compiler artifacts, an `include/`
-  directory for header files, and a `src/` directory for `.c` files.
-* There are two important commands to introduce here to deal with such source structure. One is
+  In fact, this is how developers typically organize a C/C++ source code base---a `CMakeLists.txt`
+  in the root directory, a `build/` directory for build files and compiler artifacts, an `include/`
+  directory for header files, and a `src/` directory for source files.
+* There are two important commands to introduce here to deal with such a source structure. One is
   `include_directories(<dirs>)` that tells CMake where to find header files. For example,
-  `include_directories(include)` tells CMake that `include` is a directory under the root directory
-  and there are header files in it. Include this in your `CMakeLists.txt`.
-* The other command is `file(GLOB <variable name> <wildcard expression>` that allows us to use a
+  `include_directories(include)` tells CMake that `include` is a directory under the directory where
+  `CMakeLists.txt` is located and there are header files in it. Include this in your
+  `CMakeLists.txt`.
+* The other command is `file(GLOB <variable name> <wildcard expression>)` that allows us to use a
   wildcard expression to get a list of files and store it in a variable. For example, `file(GLOB
-  SOURCE "src/*.c")` will make a list of all `.c` files under `src/` and store the list to a
-  variable named `SOURCE`. You can use this variable instead of manually listing out every `.c` file
-  under `src/` in `add_executable()`. The only catch here is that when you use a variable in
+  SOURCES "src/*.c")` will make a list of all `.c` files under `src/` and store the list to a
+  variable named `SOURCES`. You can use this variable instead of manually listing out every `.c`
+  file under `src/` in `add_executable()`. The only catch here is that when you use a variable in
   `CMakeLists.txt`, you need to use the format of `${<variable name>}`. Thus, you can change your
-  `add_executable()` to `add_executable(add ${SOURCE})`. Modify your CMakeLists.txt to include this
-  new `add_executable()` and the above `file(GLOB ...)` command.
+  `add_executable()` to `add_executable(add ${SOURCES})`. Modify your `CMakeLists.txt` to include
+  this new `add_executable()` and the above `file(GLOB ...)` command.
 * Once you're done with this task, stop recording and push all the files to your assignment repo for
   grading.
 
 # Next steps
 
-You need to accept the invite for the next assignment (A4).
+You need to accept the invite for the next assignment (A6).
 
 * Go to this URL: [https://classroom.github.com/a/PGPiPLGw](https://classroom.github.com/a/PGPiPLGw)
-* Accept the invite for Assignment 4 (A4).
+* Accept the invite for Assignment 6 (A6).
 * If you are not in `units/02-tools` directory, go to that directory.
 * Clone the assignment repo.
