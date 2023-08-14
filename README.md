@@ -174,6 +174,7 @@ Tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html).
   `CMakeLists.txt`, you need to use the format of `${<variable name>}`. Thus, you can change your
   `add_executable()` to `add_executable(add ${SOURCES})`. Modify your `CMakeLists.txt` to include
   this new `add_executable()` and the above `file(GLOB ...)` command.
+* Check `build/` and see if CMake has generated `add`. Run it and make sure it runs correctly.
 * Once you're done with this task, stop recording and push all the files to your assignment repo for
   grading.
 
