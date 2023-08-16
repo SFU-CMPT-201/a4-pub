@@ -1,4 +1,4 @@
-# Build systems
+# Assignment 5: Build systems
 
 Yet another important tool for development is a build system. A build system takes care of compiling
 the source code of a program to generate executables, libraries, or sometimes entire system images.
@@ -62,7 +62,7 @@ important points for grading.
 CMake is a "meta" build system in the sense that it generates build files for another build system
 (e.g., Makefiles for make) and relies on that build system for actual compilation. What you do with
 CMake as a developer is to write configuration files (called CMake scripts) so that CMake can
-generate build files. In this task, you will get a sense of how to use CMake. We combine a few
+generate build files. In this task, you will get a sense of how to use CMake. We adapt a few
 tutorials on the Internet for this task such as [How to Use
 CMake](https://earthly.dev/blog/using-cmake/), [Introduction to CMake by
 Example](http://derekmolloy.ie/hello-world-introductions-to-cmake/), and [CMake
@@ -70,31 +70,41 @@ Tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html).
 
 * Make sure you record what you do with `script -a`.
 * Create a directory named `cmake` and do everything below in that directory.
-* Create a directory named `src` and in it, create two files `main.c` and `add.c`.
+* Create a directory named `src` and in it, create two files `main.c` and `random_range.c`.
 * Write the following code in `main.c`.
   ```c
   #include <stdio.h>
 
-  int add(int x, int y);
+  int random_range(int min, int max);
 
   int main()
   {
-    printf("Adding 2 and 9 together gives you: %d\n" , add(2, 9));
+    printf("Random number between 0 and 1000: %d\n" , random_range(0, 1000));
     return 0;
   }
   ```
-* Write the following code in `add.c`.
+* Write the following code in `random_range.c`.
   ```c
-  int add(int x, int y)
+  #include <stdio.h>
+  #include <stdlib.h>
+  #include <time.h>
+
+  int random_range(int min, int max)
   {
-    return x + y;
+    if (min >= max) {
+      fprintf(stderr, "Error: Invalid range.\n");
+      exit(1);
+    }
+
+    srand(time(NULL));
+    return (rand() % (max - min + 1)) + min;
   }
   ```
 * Compile the code with Clang and see if it works correctly.
 * Now, you will use CMake to compile this code. In order to do this, you need a file named
   `CMakeLists.txt`. This is the main configuration file for CMake, and without this, you can't use
   CMake. This file needs to exist in the root directory of your source. So in our example, don't
-  create it in `src/`.
+  create it in `src/`. Instead, create it in the parent directory of `src/`.
 * At the minimum, you need to have three commands in CMake, `cmake_minimum_required()`, `project()`,
   and `add_executable()`. `cmake_minimum_required()` specifies the lowest version of CMake that you
   are supporting. `project()` defines a few pieces of information regarding your program.
@@ -108,73 +118,76 @@ Tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html).
   `project()`](https://cmake.org/cmake/help/latest/command/project.html#command:project) is more
   complex, but at least you need to have `project(<project name>)` where `<project name>` is the
   name of your project. You typically want to have more information than that, such as a version
-  number, a description, and the language you use. For example, `project(CMakeTutorial VERSION 1.0
-  DESCRIPTION "A CMake Tutorial" LANGUAGES C)` contains a project name (`CMakeTutorial`), a version
-  number (`1.0`), a description (`"A CMake Tutorial"`), and a supported language (`C`).
+  number, a description, and the language you use. For example, `project(CMakeExercise VERSION 1.0
+  DESCRIPTION "This is a CMake exercise." LANGUAGES C)` contains a project name (`CMakeExercise`), a
+  version number (`1.0`), a description (`"This is a CMake exercise."`), and a supported language
+  (`C`).
 * [The syntax for
   `add_executable()`](https://cmake.org/cmake/help/latest/command/add_executable.html#command:add_executable)
-  is simple in that you first need to provide the executable name, followed by a list of source
-  files. For example, `add_executable(add src/main.c src/add.c)` will generate `add` from
-  `src/main.c` and `src/add.c`.
+  is simple in that you first need to provide the executable name that you want to generate,
+  followed by a list of source files. For example, `add_executable(random src/main.c
+  src/random_range.c)` will generate `random` from `src/main.c` and `src/random_range.c`.
 * Edit `CMakeLists.txt` and include the above three commands appropriately for compiling
-  `src/main.c` and `src/add.c` and generating `add`.
+  `src/main.c` and `src/random_range.c` and generating `random`.
 * Once you have your `CMakeLists.txt`, you can compile your source with CMake. The most standard way
   of doing this is to create a directory called `build` and let CMake generate build files (e.g.,
-  Makefiles) and other files under that directory. The reason why you want to do this is to cleanly
-  separate your source from build files. To accomplish this, you can enter the following commands
-  from your source's root directory. (`$` indicates a shell prompt, so you shouldn't type it when
-  you try the commands.)
+  Makefiles) under that directory. The reason why you want to do this is to cleanly separate your
+  source from build files. To accomplish this, you can enter the following commands from your
+  source's root directory. (`$` indicates a shell prompt, so you shouldn't type it when you try the
+  commands.)
   ```bash
   $ mkdir build
   $ cd build
-  $ cmake ..
+  $ cmake .. # This tells CMake to use `CMakeLists.txt` in `..`, i.e., the parent directory.
   $ make
   ```
   As you can see, you still need to use `make` to compile your source. As mentioned earlier, this is
   because CMake is a "meta" build system.
-* Since using a separate `build/` is what everybody does, CMake provides shortcuts. The above
-  commands can be replaced with the following.
+* You can use CMake's options to do everything in the source's root directory as follows.
   ```bash
   $ cmake -S . -B build     # This generates build files in `build/`.
   $ cmake --build build     # This compiles the source and generates an executable.
   ```
   In the above commands, `-S <dir>` tells CMake that `<dir>` is the root of the source. `-B <dir>`
   tells CMake that we want to use `<dir>` for build files. `--build <dir>` tells CMake that we want
-  to compile the source using the build files in `<dir>`. 
-* Check `build/` and see if CMake has generated `add`, the executable. Run it and make sure it runs
-  correctly.
+  to compile the source using `<dir>` as the build directory.
+* Check `build/` and see if CMake has generated `random`, the executable. Run it and make sure it
+  runs correctly.
 * Now, remove `build/` and everything in it for the next steps.
-* Remove `int add(int x, int y);` in `main.c` and create a separate header file named `add.h`
-  that contains the line. Create a new directory `include` and put `add.h` in the directory. Edit
-  `main.c` appropriately to include the header.
-* The source code structure should be as follows.
+* Remove `int random_range(int min, int max);` in `main.c` and create a separate header file named
+  `random_range.h` that contains the line. Create a new directory `include` (under the source root
+  directory) and put `random_range.h` in the directory. Edit `main.c` appropriately to include the
+  header.
+* The source code structure should be as follows from the current directory (`.`), i.e., the source
+  root directory.
   ```bash
   .
   |-- CMakeLists.txt
   |-- build
   |-- include
-  |   \-- add.h
+  |   \-- random_range.h
   \-- src
-      |-- add.c
+      |-- random_range.c
       \-- main.c
   ```
-  In fact, this is how developers typically organize a C/C++ source code base---a `CMakeLists.txt`
-  in the root directory, a `build/` directory for build files and compiler artifacts, an `include/`
-  directory for header files, and a `src/` directory for source files.
+  In fact, this is how developers typically organize a C/C++ code base---a `CMakeLists.txt` (or a
+  `Makefile`) in the source root directory, a `build/` directory for build files artifacts, an
+  `include/` directory for header files, and a `src/` directory for source files.
 * There are two important commands to introduce here to deal with such a source structure. One is
   `include_directories(<dirs>)` that tells CMake where to find header files. For example,
-  `include_directories(include)` tells CMake that `include` is a directory under the directory where
-  `CMakeLists.txt` is located and there are header files in it. Include this in your
-  `CMakeLists.txt`.
+  `include_directories(include)` tells CMake that `include` is a directory that contains header
+  files. Include this in your `CMakeLists.txt`.
 * The other command is `file(GLOB <variable name> <wildcard expression>)` that allows us to use a
   wildcard expression to get a list of files and store it in a variable. For example, `file(GLOB
   SOURCES "src/*.c")` will make a list of all `.c` files under `src/` and store the list to a
   variable named `SOURCES`. You can use this variable instead of manually listing out every `.c`
-  file under `src/` in `add_executable()`. The only catch here is that when you use a variable in
-  `CMakeLists.txt`, you need to use the format of `${<variable name>}`. Thus, you can change your
-  `add_executable()` to `add_executable(add ${SOURCES})`. Modify your `CMakeLists.txt` to include
-  this new `add_executable()` and the above `file(GLOB ...)` command.
-* Check `build/` and see if CMake has generated `add`. Run it and make sure it runs correctly.
+  file under `src/` in `add_executable()`. The only catch here is that when you reference a variable
+  in `CMakeLists.txt`, you need to use the format of `${<variable name>}`, e.g., `add_executable(add
+  ${SOURCES})`. Modify your `CMakeLists.txt` to include this new `add_executable()` and the above
+  `file(GLOB ...)` command.
+* Check `build/` and see if CMake has generated `random`. Run it and make sure it runs correctly.
+* For future assignments, we will ask you to write your own `Makefile` or `CMakeLists.txt`. So make
+  sure you understand how to write those files.
 * Once you're done with this task, stop recording and push all the files to your assignment repo for
   grading.
 
