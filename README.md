@@ -26,12 +26,12 @@ This [Makefile Tutorial](https://makefiletutorial.com/) is a very well-written t
 to follow. As always, you need to record what you do as you follow the tutorial. Here are the
 important points for grading.
 
-* Make sure you record what you do with `script -a`.
+* Make sure you record what you do with `record`.
 * Create a directory named `make` and do everything in that directory.
 * As the tutorial explains, Makefiles requires tabs. However, we have replaced a tab with two spaces
   in our Neovim setup. In order to enter an actual tab, you need to enter `<Ctrl>-v` first, and then
   a tab.
-* You need to do the tutorial up to the section named `Fancy Rules`.
+* You need to work through the tutorial up to the section named `Fancy Rules`.
 * The tutorial demonstrates various ways to write Makefiles. Your task is to write the Makefiles as
   the tutorial describes and run them to understand how they behave. Since you can create only one
   Makefile per directory, you need to create a separate directory whenever you need to create a new
@@ -62,13 +62,12 @@ important points for grading.
 CMake is a "meta" build system in the sense that it generates build files for another build system
 (e.g., Makefiles for make) and relies on that build system for actual compilation. What you do with
 CMake as a developer is to write configuration files (called CMake scripts) so that CMake can
-generate build files. In this task, you will get a sense of how to use CMake. We adapt a few
-tutorials on the Internet for this task such as [How to Use
-CMake](https://earthly.dev/blog/using-cmake/), [Introduction to CMake by
-Example](http://derekmolloy.ie/hello-world-introductions-to-cmake/), and [CMake
-Tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html).
+generate build files. In this task, you will get a sense of how to use CMake. We adapt a few online
+tutorials for this task such as [How to Use CMake](https://earthly.dev/blog/using-cmake/),
+[Introduction to CMake by Example](http://derekmolloy.ie/hello-world-introductions-to-cmake/), and
+[CMake Tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html).
 
-* Make sure you record what you do with `script -a`.
+* Make sure you record what you do with `record`.
 * Create a directory named `cmake` and do everything below in that directory.
 * Create a directory named `src` and in it, create two files `main.c` and `random_range.c`.
 * Write the following code in `main.c`.
@@ -133,8 +132,8 @@ Tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html).
   of doing this is to create a directory called `build` and let CMake generate build files (e.g.,
   Makefiles) under that directory. The reason why you want to do this is to cleanly separate your
   source from build files. To accomplish this, you can enter the following commands from your
-  source's root directory. (`$` indicates a shell prompt, so you shouldn't type it when you try the
-  commands.)
+  source's root directory. (`$` indicates a shell prompt, so you shouldn't type it in when you try
+  the commands.)
   ```bash
   $ mkdir build
   $ cd build
@@ -188,8 +187,8 @@ Tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html).
 * Check `build/` and see if CMake has generated `random`. Run it and make sure it runs correctly.
 * For future assignments, we will ask you to write your own `Makefile` or `CMakeLists.txt`. So make
   sure you understand how to write those files.
-* Once you're done with this task, stop recording and push all the files to your assignment repo for
-  grading.
+* Once you're done with this task, stop recording and push all the files/directories that you
+  created, including `.log/` and `.nvim/`, for grading.
 
 # Next steps
 
