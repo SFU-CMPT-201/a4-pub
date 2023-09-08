@@ -1,4 +1,4 @@
-# Assignment 5: Build systems
+# Assignment 5: Build Systems
 
 Yet another important tool for development is a *build system*. A build system takes care of
 compiling the source code of a program to generate executables, libraries, or sometimes entire
@@ -35,7 +35,7 @@ as you follow the tutorial. But first, here are a few important points to note:
   in our Neovim setup. In order to enter an actual tab, you need to enter `<Ctrl>-v` first, and then
   a tab.
 
-### Make activity
+### Make Activity
 
 [Makefile Tutorial](https://makefiletutorial.com/) demonstrates various ways to write Makefiles.
 Your task is to **write the Makefiles as the tutorial describes and run them to understand how they
@@ -117,7 +117,7 @@ tutorials for this task such as [How to Use CMake](https://earthly.dev/blog/usin
 
 * Compile the code with Clang and see if it works correctly.
 
-### Part 1: CMake basics
+### Part 1: CMake Basics
 
 * Now, you will use CMake to compile this code. In order to do this, you need a file named
   `CMakeLists.txt`. This is the main configuration file for CMake, and without this, you can't use
@@ -178,7 +178,7 @@ tutorials for this task such as [How to Use CMake](https://earthly.dev/blog/usin
 * Check `build/` and see if CMake has generated `random`, the executable. Run it and make sure it
   runs correctly.
 
-### Part 2: A CMake project
+### Part 2: A CMake Project
 
 * Now, remove `build/` and everything in it for the next steps.
 * Remove `int random_range(int min, int max);` in `main.c` and create a separate header file named
@@ -218,14 +218,14 @@ tutorials for this task such as [How to Use CMake](https://earthly.dev/blog/usin
   command.
 * Check `build/` and see if CMake has generated `random`. Run it and make sure it runs correctly.
 
-### Part 3: Final notes
+### Part 3: Final Notes
 
 * For future assignments, we will ask you to write your own `Makefile` or `CMakeLists.txt`. So make
   sure you understand how to write those files.
 * Once you're done with this task, stop recording and push all the files/directories that you
   created, including `.record/` and `.nvim/`, for grading.
 
-# Next steps
+# Next Steps
 
 You need to accept the invite for the next assignment (A6).
 
