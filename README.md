@@ -229,7 +229,7 @@ tutorials for this task such as [How to Use CMake](https://earthly.dev/blog/usin
 
 You need to accept the invite for the next assignment (A6).
 
-* Go to this URL: [https://classroom.github.com/a/PGPiPLGw](https://classroom.github.com/a/PGPiPLGw)
+* Get the URL for A6. Go to the URL on your browser.
 * Accept the invite for Assignment 6 (A6).
 * If you are not in `units/02-tools` directory, go to that directory.
 * Clone the assignment repo.
