@@ -1,4 +1,4 @@
-# Assignment 5: Build Systems
+# Assignment 4: Build Systems
 
 Yet another important tool for development is a *build system*. A build system takes care of
 compiling the source code of a program to generate executables, libraries, or sometimes entire
@@ -227,9 +227,9 @@ tutorials for this task such as [How to Use CMake](https://earthly.dev/blog/usin
 
 # Next Steps
 
-You need to accept the invite for the next assignment (A6).
+You need to accept the invite for the next assignment (A5).
 
-* Get the URL for A6. Go to the URL on your browser.
-* Accept the invite for Assignment 6 (A6).
+* Get the URL for A5. Go to the URL on your browser.
+* Accept the invite for Assignment 5 (A5).
 * If you are not in `units/02-tools` directory, go to that directory.
 * Clone the assignment repo.
