@@ -45,7 +45,7 @@ for each Makefile. The directory should be named after the (sub)-section name in
 Below are the directories you need to create. In each of these directories, you must have a Makefile
 that contains the code the tutorial demonstrates in that section. If the tutorial shows you multiple
 boxes (colored in black) within a section, please include them all in a single Makefile. There are
-exceptions to this as we explain below.
+exceptions to this as we explain in parentheses below.
 
 * Getting Started:
     * `running-the-examples`
