@@ -152,16 +152,18 @@ tutorials for this task such as [How to Use CMake](https://earthly.dev/blog/usin
       src/random_range.c)` will generate `random` from `src/main.c` and `src/random_range.c`.
 * Edit `CMakeLists.txt` and include the above three commands appropriately for compiling
   `src/main.c` and `src/random_range.c` and generating `random`.
-* You also need to make sure that you use the compiler that you want to use with CMake. As mentioned
-  earlier, we use `clang` in this course, and the following command sets the compiler for CMake to
-  `clang`.
+* You also need to make sure that you use the C compiler that you want to use with CMake. As
+  mentioned earlier, we use `clang` in this course, and the command below sets the C compiler for
+  CMake to `clang`. What it does is setting the environment variable `CC`, which various programs
+  commonly use to find the C compiler.
 
   ```bash
   $ export CC=$(which clang)
   ```
 
   Additionally, you can set the C++ compiler to `clang++` as well, though we do not need it for this
-  course.
+  course. The command below sets the environment variable `CXX`, which is the environment variable
+  for C++ compiler.
 
   ```bash
   $ export CXX=$(which clang++)
