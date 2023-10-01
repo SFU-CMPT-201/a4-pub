@@ -30,6 +30,9 @@ as you follow the tutorial. But first, here are a few important points to note:
 
 * Make sure you record what you do with `record`.
 * Create a directory named `make` and do everything in that directory.
+* The tutorial uses `cc` as the compiler, which defaults to `gcc`. We do not use `gcc` in this
+  course. Instead, we use `clang`. The behavior is different, so make sure you use `clang` instead
+  of `cc` or `gcc`.
 * You need to work through the tutorial up to the end of the section named `Fancy Rules`.
 * As the tutorial explains, Makefiles require tabs. However, we have replaced a tab with two spaces
   in our Neovim setup. In order to enter an actual tab, you need to enter `<Ctrl>-v` first, and then
@@ -149,12 +152,27 @@ tutorials for this task such as [How to Use CMake](https://earthly.dev/blog/usin
       src/random_range.c)` will generate `random` from `src/main.c` and `src/random_range.c`.
 * Edit `CMakeLists.txt` and include the above three commands appropriately for compiling
   `src/main.c` and `src/random_range.c` and generating `random`.
-* Once you have your `CMakeLists.txt`, you can compile your source with CMake. The most standard way
-  of doing this is to create a directory called `build` and let CMake generate build files (e.g.,
-  Makefiles) under that directory. The reason why you want to do this is to cleanly separate your
-  source from build files. To accomplish this, you can enter the following commands from your
-  source's root directory. (`$` indicates a shell prompt, so you shouldn't type it in when you try
-  the commands.)
+* You also need to make sure that you use the compiler that you want to use with CMake. As mentioned
+  earlier, we use `clang` in this course, and the following command sets the compiler for CMake to
+  `clang`.
+
+  ```bash
+  $ export CC=$(which clang)
+  ```
+
+  Additionally, you can set the C++ compiler to `clang++` as well, though we do not need it for this
+  course.
+
+  ```bash
+  $ export CXX=$(which clang++)
+  ```
+
+* Once you have your `CMakeLists.txt` and the compilers all set up, you can compile your source with
+  CMake. The most standard way of doing this is to create a directory called `build` and let CMake
+  generate build files (e.g., Makefiles) under that directory. The reason why you want to do this is
+  to cleanly separate your source from build files. To accomplish this, you can enter the following
+  commands from your source's root directory. (`$` indicates a shell prompt, so you shouldn't type
+  it in when you try the commands.)
 
   ```bash
   $ mkdir build
