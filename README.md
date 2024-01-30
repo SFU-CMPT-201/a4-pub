@@ -161,10 +161,9 @@ tutorials for this task such as [How to Use CMake](https://earthly.dev/blog/usin
   $ export CC=$(which clang)
   $ export CXX=$(which clang++)
   ```
-
+  
   In fact, this needs to be done every time you log in. In order to automate this, open your
   ~/.zshrc and add the above two commands at the end.
-  
 * Once you have your `CMakeLists.txt` and the compilers all set up, you can compile your source with
   CMake. The most standard way of doing this is to create a directory called `build` and let CMake
   generate build files (e.g., Makefiles) under that directory. The reason why you want to do this is
