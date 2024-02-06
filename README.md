@@ -22,6 +22,12 @@ As the name suggests, it aims to be cross-platform, meaning that it allows you t
 configuration to compile across different platforms. Both Make and CMake have many features but you
 will learn just the basics so you can use them in future assignments.
 
+## Important Note
+
+You ***should not*** copy and paste the code or command examples here. You have to type them
+yourself and understand the meanings. If you copy and paste, you ***will not*** get any credit
+for this assignment.
+
 ## Task 0: Make
 
 In this task, you will read through [Makefile Tutorial](https://makefiletutorial.com/), which is a
