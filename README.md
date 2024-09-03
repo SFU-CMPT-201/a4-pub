@@ -237,22 +237,28 @@ tutorials for this task such as [How to Use CMake](https://earthly.dev/blog/usin
 
 ### Part 3: Final Notes
 
-* For future assignments, we will ask you to write your own `Makefile` or `CMakeLists.txt`. So make
-  sure you understand how to write those files.
-* Once you're done with this task, stop recording and push all the files/directories that you
-  created, including `.record/` and `.nvim/`, for grading.
-* As with previous assignments, make sure you run `a4-checker` to check if your work is ready for
-  grading. `a4-checker` performs the following.
-    * It checks if you have correct recording files. You will receive a 0 if this fails.
-    * It checks if you have used `nvim` correctly. You will receive a 0 if this fails.
-    * It flags if you have copied and pasted anything. You will receive a 0 if this fails.
-    * It performs some basic checks for the tasks above.
-    * Note that if a check fails, it does not always tell you why. You need to debug it by yourself
-      and find out.
-    * The checker is not a grader but if it says that everything is good and if you are done with
-      the above tasks, you will get the full credit.
-    * It is entirely *your responsibility* to run `a4-checker` before submitting your work. If you
-      don't do it, you may get an unexpected grade.
+Once everything is done, make sure you stop recording.
+
+For all future assignments, we will ask you to write your own `Makefile` or `CMakeLists.txt`. So
+make sure you understand how to write those files.
+
+## Submission
+
+Make sure you use git to push all the files/directories you created, including `.nvim/` and
+`.record/`, for grading.
+
+As with previous assignments, make sure you run `a4-checker` to check if your work is ready for
+grading. `a4-checker` performs the following.
+* It checks if you have correct recording files. You will receive a 0 if this fails.
+* It checks if you have used `nvim` correctly. You will receive a 0 if this fails.
+* It flags if you have copied and pasted anything. You will receive a 0 if this fails.
+* It performs some basic checks for the tasks above.
+* Note that if a check fails, it does not always tell you why. You need to debug it by yourself
+  and find out.
+* The checker is not a grader but if it says that everything is good and if you are done with
+  the above tasks, you will get the full credit.
+* It is entirely *your responsibility* to run `a4-checker` before submitting your work. If you
+  don't do it, you may get an unexpected grade.
 
 # Next Steps
 
