@@ -22,12 +22,6 @@ As the name suggests, it aims to be cross-platform, meaning that it allows you t
 configuration to compile across different platforms. Both Make and CMake have many features but you
 will learn just the basics so you can use them in future assignments.
 
-## Important Note
-
-You ***should not*** copy and paste the code or command examples. You have to type them yourself
-and understand the meanings. If you copy and paste, you ***will not*** get any credit for this
-assignment.
-
 ## Task 0: Make
 
 In this task, you will read through [Makefile Tutorial](https://makefiletutorial.com/), which is a
@@ -90,7 +84,8 @@ tutorials for this task such as [How to Use CMake](https://earthly.dev/blog/usin
 
 * Make sure you record what you do with `record`.
 * Create a directory named `cmake` and do everything below in that directory.
-* Create a directory named `src` and in it, create two files `main.c` and `random_range.c`.
+* Go to the `cmake` directory and create a directory named `src`. Go in there and create two files
+  `main.c` and `random_range.c`.
     * Write the following code in `main.c`.
 
       ```c
@@ -167,9 +162,10 @@ tutorials for this task such as [How to Use CMake](https://earthly.dev/blog/usin
   $ export CC=$(which clang)
   $ export CXX=$(which clang++)
   ```
-  
-  In fact, this needs to be done every time you log in. In order to automate this, open your
-  ~/.zshrc and add the above two commands at the end.
+
+  In fact, this needs to be done every time you log in. In order to automate this, we have
+  configured this already by adding the above two commands at the end of `~/.zshenv`. Open
+  `~/.zshenv` and check if the above two commands are in there.
 * Once you have your `CMakeLists.txt` and the compilers all set up, you can compile your source with
   CMake. The most standard way of doing this is to create a directory called `build` and let CMake
   generate build files (e.g., Makefiles) under that directory. The reason why you want to do this is
@@ -245,6 +241,18 @@ tutorials for this task such as [How to Use CMake](https://earthly.dev/blog/usin
   sure you understand how to write those files.
 * Once you're done with this task, stop recording and push all the files/directories that you
   created, including `.record/` and `.nvim/`, for grading.
+* As with previous assignments, make sure you run `a4-checker` to check if your work is ready for
+  grading. `a4-checker` performs the following.
+    * It checks if you have correct recording files. You will receive a 0 if this fails.
+    * It checks if you have used `nvim` correctly. You will receive a 0 if this fails.
+    * It flags if you have copied and pasted anything. You will receive a 0 if this fails.
+    * It performs some basic checks for the tasks above.
+    * Note that if a check fails, it does not always tell you why. You need to debug it by yourself
+      and find out.
+    * The checker is not a grader but if it says that everything is good and if you are done with
+      the above tasks, you will get the full credit.
+    * It is entirely *your responsibility* to run `a4-checker` before submitting your work. If you
+      don't do it, you may get an unexpected grade.
 
 # Next Steps
 
